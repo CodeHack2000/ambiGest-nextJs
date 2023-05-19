@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.secondMenuItem {
+    @apply text-primary-dark absolute uppercase hidden group-hover:inline text-right text-sm
+}
+
+.navbarItem {
+    @apply text-white font-semibold uppercase hover:bg-white hover:text-primary-dark h-full w-full text-center pt-1 transition-colors duration-300 ease-in-out
+}
+
+.navbarSmallItem {
+    @apply w-full h-12 bg-primary-semi flex items-center uppercase text-white font-light pl-5 border-b hover:bg-primary-light hover:text-primary-dark transition-colors duration-500 ease-in-out
+}
+
+.inputStyle {
+    @apply w-full py-1 bg-customGray pl-4 my-4 rounded-lg
+}
+
+.transitionReScale {
+    @apply transition-transform duration-300 ease-in-out hover:scale-110
+}
+
+.group:hover .group-hover\:transitionReScale {
+    @apply transition-transform duration-300 ease-in-out hover:scale-105
+}
+
+.textExtraSmall {
+    font-size: 0.6rem;
+    line-height: 1rem;
+}
+
+.outlineButton {
+    @apply border border-primary-dark text-primary-dark rounded-lg hover:bg-primary-light hover:border-primary-light hover:font-bold transition-colors duration-500 ease-in-out font-semibold text-center
+}
+
+@media (min-width: 900px) {
+    .customMd\:inline {
+        display: inline;
+    }
+    .customMd\:hidden {
+        display: none;
+    }
+    .customMd\:w-1\/2 {
+        width: 50%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .customMd\:w-2\/3 {
+        width: 66.666667%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .customMd\:mx-0 {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .customMd\:mx-0 {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .customMd\:dashMarginX {
+        margin-left: 6rem;
+        margin-right: 6rem;
+    }
+}
+
+/*ScrollBar*/
+body {
+    scrollbar-width: thin;
+    scrollbar-color: #CBD5E0 #EDF2F7;
+}
+
+body::-webkit-scrollbar {
+    width: 8px;
+}
+
+body::-webkit-scrollbar-track {
+    background-color: #EDF2F7;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #b6c0c9;
+    border-radius: 4px;
+}
+
+div {
+    scrollbar-width: thin;
+    scrollbar-color: #CBD5E0 #EDF2F7;
+}
+
+div::-webkit-scrollbar {
+    width: 8px;
+}
+
+div::-webkit-scrollbar-track {
+    background-color: #EDF2F7;
+}
+
+div::-webkit-scrollbar-thumb {
+    background-color: #b6c0c9;
+    border-radius: 4px;
+}
