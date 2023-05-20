@@ -20,7 +20,12 @@ module.exports = {
           light: "#CEEBA8",
           semi: "#78B526"
         },
-        customGray: "#F1F2F9"
+        customGray: "#F1F2F9",
+        blueCard: "#25637c",
+        pizzaGraphic: "#71C4C3",
+        customGreen: "#3BED04",
+        customPurple: "#88A1E1",
+        customRed: "#EE6E59"
       }
     },
   },
