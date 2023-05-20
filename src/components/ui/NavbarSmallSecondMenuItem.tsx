@@ -20,7 +20,7 @@ const NavbarSmallSecondMenuItem: FC<NavbarSmallSecondMenuItemProps> = ({name}) =
 
   return (
     <Link href={uri}>
-        <div dangerouslySetInnerHTML={{__html: iconImg}} className='w-6 h-6 transitionReScale mx-2 text-white'></div>
+        <div dangerouslySetInnerHTML={{__html: iconImg}} className='w-5 h-5 xs:iconSize xs:mx-2 transitionReScale mx-1 text-white'></div>
     </Link>
   )
 }

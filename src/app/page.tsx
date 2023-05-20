@@ -30,7 +30,7 @@ export default function Home() {
         <div className="w-full flex justify-center">
           <DashboardMainCard username={username} />
         </div>
-        <div className="flex justify-center">
+        <div className="flex justify-center mx-2 xs:mx-0">
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 mt-12 w-full">
             <DashboardSecondaryCard title="Meus Pedidos" />
             <DashboardSecondaryCard title="Leituras" />

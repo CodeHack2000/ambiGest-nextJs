@@ -38,13 +38,16 @@ const AuthInput: FC<AuthInputProps> = ({mode, inputType}) => {
     <div>
         <div className='flex items-baseline justify-between'>
             {inputType.length > 0 ? (
-                <label className='text-sm'>{labelText}</label>
+                <label className='text-sm mt-5'>{labelText}</label>
             ) : null}
             {(inputType === "password" && mode === "login") ? (
-                <Link href="/forgotPassword" className='text-xs font-bold'>Esqueceu-se da palavra-passe?</Link>
+                <Link href="/forgotPassword" className='text-xs font-bold hidden xs:inline'>Esqueceu-se da palavra-passe?</Link>
             ) : null}
         </div>
-        <input className='w-full py-1 bg-customGray pl-4 mb-5 mt-1 rounded-lg text-sm' type={inputType} placeholder={inputPlaceholder}/>
+        <input className='w-full py-1 bg-customGray pl-4 mb-1 mt-1 rounded-lg text-sm' type={inputType} placeholder={inputPlaceholder}/>
+        {(inputType === "password" && mode === "login") ? (
+            <div className='xs:hidden flex justify-end mt-1'><Link href="/forgotPassword" className='text-xs font-bold'>Esqueceu-se da palavra-passe?</Link></div>
+        ) : null}
     </div>
   )
 }
