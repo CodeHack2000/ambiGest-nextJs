@@ -11,7 +11,8 @@ module.exports = {
         'height': 'height',
         'margin': 'margin',
         'inline': 'inline',
-        'hidden': 'hidden'
+        'hidden': 'hidden',
+        'width': 'width'
       },
       colors: {
         primary: {

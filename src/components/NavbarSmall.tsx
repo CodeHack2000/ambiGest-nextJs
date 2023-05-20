@@ -5,7 +5,7 @@ import NavbarSmall_Items from '@/ui/NavbarSmall_Items'
 
 import { FC } from 'react'
 import Link from 'next/link'
-import NavbarSmallSecondMenu from './ui/NavbarSmallSecondMenu'
+import NavbarSmallSecondMenu from '@/ui/NavbarSmallSecondMenu'
 
 interface NavbarSmallProps {
   isUserLogged: Boolean
