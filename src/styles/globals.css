@@ -66,6 +66,38 @@
     }
 }
 
+/* For resize from mobile to pc */
+@media (min-width: 450px) {
+    .xs\:iconSize {
+        height: 1.5rem;
+        width: 1.5rem;
+    }
+    .xs\:mr-2 {
+        margin-right: 0.5rem;
+    }
+    .xs\:flex-row {
+        flex-direction: row;
+    }
+    .xs\:mx-2 {
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+    }
+    .xs\:my-10 {
+        margin-top: 2.5rem;
+        margin-bottom: 2.5rem;
+    }
+    .xs\:mx-0 {
+        margin-right: 0;
+        margin-top: 0;
+    }
+    .xs\:inline {
+        display: inline;
+    }
+    .xs\:hidden {
+        display: none;
+    }
+}
+
 .customMainCardScreen {
     @apply w-full sm:w-3/4 customMd:w-2/3 lg:w-3/4 xl:w-3/5 transition-width duration-1000 ease-in-out
 }

@@ -19,7 +19,7 @@ const AuthButton: FC<AuthButtonProps> = ({mode}) => {
         }
     }, [mode])
 
-  return <button className='uppercase bg-primary-dark rounded-lg py-1 text-white text-sm mt-4 mb-8 shadow-sm shadow-black'>{buttonText}</button>
+  return <button className='uppercase bg-primary-dark rounded-lg py-1 text-white text-sm mt-8 mb-8 shadow-sm shadow-black'>{buttonText}</button>
 }
 
 export default AuthButton
