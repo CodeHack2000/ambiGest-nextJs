@@ -66,6 +66,14 @@
     }
 }
 
+.customMainCardScreen {
+    @apply w-full sm:w-3/4 customMd:w-2/3 lg:w-3/4 xl:w-3/5 transition-width duration-1000 ease-in-out
+}
+
+.customAuthCardScreen {
+    @apply w-full sm:w-3/4 md:w-2/4 lg:w-2/5 xl:w-2/6 transition-width duration-1000 ease-in-out
+}
+
 /*ScrollBar*/
 body {
     scrollbar-width: thin;

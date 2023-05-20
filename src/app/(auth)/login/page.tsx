@@ -17,8 +17,8 @@ const page: FC = () => {
                 <div className='flex justify-center mt-16'>
                     <LoginCard />
                 </div>
-                <div className='flex justify-center mt-8 customMd:mx-0 mx-8'>
-                    <div className='flex justify-center text-sm font-semibold shadow-md shadow-black rounded-xl py-4 customMd:w-1/2 w-full lg:w-2/5'>
+                <div className='flex justify-center mt-8 sm:mx-0 mx-8'>
+                    <div className='flex justify-center text-sm font-semibold shadow-md shadow-black rounded-xl py-4 customAuthCardScreen'>
                         <span className='opacity-75'>Novo no ambiGest?</span>
                         <Link href="/register" className='ml-2 font-bold'>Crie uma conta.</Link>
                     </div>
