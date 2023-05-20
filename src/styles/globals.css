@@ -35,6 +35,14 @@
     @apply border border-primary-dark text-primary-dark rounded-lg hover:bg-primary-light hover:border-primary-light hover:font-bold transition-colors duration-500 ease-in-out font-semibold text-center
 }
 
+.mediumCard {
+    @apply mx-3 shadow-md shadow-black flex flex-col justify-center px-5 rounded-xl customAuthCardScreen
+}
+
+.mainCard {
+    @apply mx-4 shadow shadow-black rounded-xl flex flex-col px-4 items-center customMainCardScreen
+}
+
 @media (min-width: 900px) {
     .customMd\:inline {
         display: inline;
@@ -95,6 +103,12 @@
     }
     .xs\:hidden {
         display: none;
+    }
+    .xs\:w-3\/4 {
+        width: 75%;
+    }
+    .xs\:h-card {
+        height: 27rem;
     }
 }
 
