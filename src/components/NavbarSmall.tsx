@@ -5,6 +5,7 @@ import NavbarSmall_Items from '@/ui/NavbarSmall_Items'
 
 import { FC } from 'react'
 import Link from 'next/link'
+import NavbarSmallSecondMenu from './ui/NavbarSmallSecondMenu'
 
 interface NavbarSmallProps {
   isUserLogged: Boolean
@@ -33,12 +34,17 @@ const NavbarSmall: FC<NavbarSmallProps> = ({isUserLogged}) => {
 
   return (
     <div className='select-none'>
-        <div className='w-full h-12 bg-primary-dark shadow-sm shadow-black flex justify-start items-center relative z-10'>
-            <div className='text-white px-3 border-r h-full pt-1 cursor-pointer hover:bg-primary-semi' onClick={handleMenuClick}>
-                {/* Menu Icon */}
-                <div className='w-10 h-10' dangerouslySetInnerHTML={{__html: menuIcon}}></div>
+        <div className='w-full h-12 bg-primary-dark shadow-sm shadow-black relative z-10 flex items-center justify-between'>
+            <div className='flex justify-start items-center '>
+                <div className='text-white px-3 border-r h-full pt-1 cursor-pointer hover:bg-primary-semi' onClick={handleMenuClick}>
+                    {/* Menu Icon */}
+                    <div className='w-10 h-10' dangerouslySetInnerHTML={{__html: menuIcon}}></div>
+                </div>
+                <Link href="/" className='text-white ml-3 text-2xl font-semibold tracking-wide'>ambiGest</Link>
             </div>
-            <Link href="/" className='text-white ml-3 text-2xl font-semibold tracking-wide'>ambiGest</Link>
+            <div className='flex justify-end mr-2 py-1 px-2'>
+                <NavbarSmallSecondMenu isUserLogged={isUserLogged} />
+            </div>
         </div>
         <div className='hidden' id='navbarSmallItemsContainer'>
             <div className='absolute w-full h-full bg-slate-400 top-0 opacity-50'></div>
