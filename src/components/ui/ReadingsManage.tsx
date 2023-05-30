@@ -2,6 +2,7 @@
 
 import { FC, useState } from 'react'
 import ReadingsPopup from './ReadingsPopup'
+import { Dayjs } from 'dayjs'
 
 interface ReadingsManageProps {
     nextReadingDate: string
@@ -18,11 +19,16 @@ const ReadingsManage: FC<ReadingsManageProps> = ({nextReadingDate}) => {
         setIsPopupOpen(false)
     }
 
+    const handlePopupSave = (date: Dayjs, readingNumber: string) => {
+        setIsPopupOpen(false)
+        // É PRECISO TRATAR OS DADOS QUE QUEREMOS SALVAR
+    }
+
   return (
     <div className='flex flex-col items-center relative'>
         <div className='z-20'>
             {isPopupOpen ? (
-                <ReadingsPopup onClose={handlePopupClose} />
+                <ReadingsPopup onClose={handlePopupClose} onSave={handlePopupSave} />
             ): null}
         </div>
         <div className='w-full rounded-lg mx-2 bg-primary-light flex py-2 px-3 font-semibold'>

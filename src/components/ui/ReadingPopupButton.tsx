@@ -9,17 +9,20 @@ interface ReadingPopupButtonProps {
 
 const ReadingPopupButton: FC<ReadingPopupButtonProps> = ({type, btnAction}) => {
     const [btnText, setBtnText] = useState("")
+    const [btnStyle, setBtnStyle] = useState("")
 
     useEffect(() => {
-        if (type === "canclel") {
+        if (type === "cancel") {
             setBtnText("Voltar")
+            setBtnStyle("py-1 px-3 border border-primary-dark rounded-xl text-primary-dark w-28 transitionReScale")
         } else {
             setBtnText("Guardar")
+            setBtnStyle("py-1 px-3 rounded-xl text-white bg-primary-dark w-28 transitionReScale") 
         }
     }, [type])
 
   return (
-    <button type='button' onClick={btnAction}>{btnText}</button>
+    <button type='button' className={btnStyle} onClick={btnAction}>{btnText}</button>
   )
 }
 
