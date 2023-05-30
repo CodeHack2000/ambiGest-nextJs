@@ -22,7 +22,7 @@ const ReadingPopupButton: FC<ReadingPopupButtonProps> = ({type, btnAction}) => {
     }, [type])
 
   return (
-    <button type='button' className={btnStyle} onClick={btnAction}>{btnText}</button>
+    <button type='button' onClick={btnAction}>{btnText}</button>
   )
 }
 
