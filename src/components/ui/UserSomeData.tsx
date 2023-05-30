@@ -8,7 +8,7 @@ interface UserSomeDataProps {
 const UserSomeData: FC<UserSomeDataProps> = ({username}) => {
   return (
     <div className='flex flex-col items-center py-4'>
-        {/* PRECISAMOS DE PENSAR COMO RECEBER OS DADOS DO UTILIZADOR */}
+        {/* PENSAR COMO RECEBER OS DADOS DO UTILIZADOR */}
         <span className='font-semibold text-lg'>Meu Perfil</span>
         <div className='w-32 rounded-3xl shadow shadow-black my-4'>
             <img
