@@ -13,7 +13,7 @@ export default function Navbar() {
         <Link href="#" className='navbarItem'>
             Agenda
         </Link>
-        <Link href="#" className='navbarItem'>
+        <Link href="/readings" className='navbarItem'>
             Leituras
         </Link>
     </div>
