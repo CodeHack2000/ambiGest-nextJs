@@ -4,11 +4,13 @@ import Link from 'next/link'
 import { FC, useEffect, useState } from 'react'
 
 interface AuthInputProps {
-  mode: String
+  mode: string
   inputType: string
+  text: string
+  onWrite: (txt: string) => void
 }
 
-const AuthInput: FC<AuthInputProps> = ({mode, inputType}) => {
+const AuthInput: FC<AuthInputProps> = ({mode, inputType, text, onWrite}) => {
     const [labelText, setLabelText] = useState("")
     const [inputPlaceholder, setInputPlaceholder] = useState("")
 
@@ -35,7 +37,7 @@ const AuthInput: FC<AuthInputProps> = ({mode, inputType}) => {
     }, [mode, inputType])
 
   return (
-    <div>
+    <>
         <div className='flex items-baseline justify-between'>
             {inputType.length > 0 ? (
                 <label className='text-sm mt-5'>{labelText}</label>
@@ -44,11 +46,11 @@ const AuthInput: FC<AuthInputProps> = ({mode, inputType}) => {
                 <Link href="/forgotPassword" className='text-xs font-bold hidden xs:inline'>Esqueceu-se da palavra-passe?</Link>
             ) : null}
         </div>
-        <input className='w-full py-1 bg-customGray pl-4 mb-1 mt-1 rounded-lg text-sm' type={inputType} placeholder={inputPlaceholder}/>
+        <input value={text} onChange={(event) => onWrite(event.currentTarget.value)} className='w-full py-1 bg-customGray pl-4 mb-1 mt-1 rounded-lg text-sm' type={inputType} placeholder={inputPlaceholder}/>
         {(inputType === "password" && mode === "login") ? (
             <div className='xs:hidden flex justify-end mt-1'><Link href="/forgotPassword" className='text-xs font-bold'>Esqueceu-se da palavra-passe?</Link></div>
         ) : null}
-    </div>
+    </>
   )
 }
 
