@@ -14,7 +14,7 @@ const NavbarSmall_Items: FC<NavbarSmall_ItemsProps> = ({isUserLogged}) => {
         <div className='w-full h-fit absolute'>
           <Link href="#" className='navbarSmallItem'>Recolhas</Link>
           <Link href="/invoices" className='navbarSmallItem'>Faturação</Link>
-          <Link href="#" className='navbarSmallItem'>Agenda</Link>
+          <Link href="/schedules" className='navbarSmallItem'>Agenda</Link>
           <Link href="/readings" className='navbarSmallItem'>Leituras</Link>
         </div>
       ) : (
