@@ -22,6 +22,10 @@
     @apply border-2 border-pizzaGraphic bg-pizzaGraphic opacity-80 text-blueCard rounded-lg font-bold shadow-sm shadow-black hover:bg-pizzaGraphic hover:text-white hover:opacity-100 hover:font-semibold hover:scale-105 transition-all duration-500 ease-in-out
 }
 
+.greenBtn {
+    @apply uppercase bg-primary-dark rounded-lg py-1 text-white text-sm mt-8 mb-8 shadow-sm shadow-black hover:bg-primary-light hover:text-primary-dark hover:font-semibold transition-colors duration-300 ease-in-out
+}
+
 .transitionReScale {
     @apply transition-transform duration-300 ease-in-out hover:scale-110
 }
@@ -42,6 +46,10 @@
 
 .outlineButton {
     @apply border border-primary-dark text-primary-dark rounded-lg hover:bg-primary-light hover:border-primary-light hover:font-bold transition-colors duration-500 ease-in-out font-semibold text-center
+}
+
+.bigCard {
+    @apply mx-3 shadow-md shadow-black flex flex-col justify-center px-5 rounded-xl customBigCardScreen
 }
 
 .mediumCard {
@@ -133,6 +141,10 @@ input[type=number] {
         font-size: 0.875rem;
         line-height: 1.25rem;
     }
+}
+
+.customBigCardScreen {
+    @apply w-full sm:w-2/3 md:w-3/4 lg:w-3/5 xl:w-3/6
 }
 
 .customMainCardScreen {
