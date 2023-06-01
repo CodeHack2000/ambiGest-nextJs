@@ -1,6 +1,6 @@
 import React from 'react'
-import AuthButton from '@/ui/AuthButton'
 import AuthInput from '@/ui/AuthInput'
+import GreenBtn from './ui/GreenBtn'
 
 export default function RegisterCard() {
   return (
@@ -9,7 +9,7 @@ export default function RegisterCard() {
         <span className='text-sm mb-3 font-semibold'>Juntos tornamos o mundo melhor</span>
         <AuthInput mode="register" inputType='email' />
         <AuthInput mode="register" inputType='password' />
-        <AuthButton mode="register" />
+        <GreenBtn text='Registar' />
     </div>
   )
 }
