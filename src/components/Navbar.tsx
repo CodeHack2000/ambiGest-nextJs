@@ -4,7 +4,7 @@ import React from 'react'
 export default function Navbar() {
   return (
     <div className='w-full h-9 bg-primary-dark shadow-sm shadow-black flex justify-evenly items-center pt-1 px-32' >
-        <Link href="#" className='navbarItem'>
+        <Link href="/collections" className='navbarItem'>
             Recolhas
         </Link>
         <Link href="/invoices" className='navbarItem'>

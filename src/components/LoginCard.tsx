@@ -22,7 +22,7 @@ export default function LoginCard() {
         <span className='font-semibold text-md mt-6 mb-3 text-center'>Entrar no ambiGest</span>
         <AuthInput mode="login" inputType='email' text={emailText} onWrite={handleWriteEmail} />
         <AuthInput mode="login" inputType='password' text={passwordText} onWrite={handleWritePassword} />
-        <GreenBtn text='Entrar'/>
+        <GreenBtn text='Entrar' margin={true}/>
     </div>
   )
 }
