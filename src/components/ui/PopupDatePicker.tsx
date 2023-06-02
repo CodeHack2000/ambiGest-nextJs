@@ -3,12 +3,12 @@ import { FC } from 'react'
 import {AdapterDayjs} from '@mui/x-date-pickers/AdapterDayjs'
 import { Dayjs } from 'dayjs'
 
-interface ReadingPopupDatepickerProps {
+interface PopupDatepickerProps {
   setDate: (date: Dayjs) => void
   date: Dayjs
 }
 
-const ReadingPopupDatepicker: FC<ReadingPopupDatepickerProps> = ({setDate, date}) => {
+const PopupDatepicker: FC<PopupDatepickerProps> = ({setDate, date}) => {
     const handleDateChange = (newDate: Dayjs | null) => {
         if (newDate) {
           setDate(newDate);
@@ -33,4 +33,4 @@ const ReadingPopupDatepicker: FC<ReadingPopupDatepickerProps> = ({setDate, date}
   )
 }
 
-export default ReadingPopupDatepicker
+export default PopupDatepicker

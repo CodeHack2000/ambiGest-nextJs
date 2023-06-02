@@ -26,6 +26,10 @@
     @apply uppercase bg-primary-dark rounded-lg py-1 text-white text-sm mt-8 mb-8 shadow-sm shadow-black hover:bg-primary-light hover:text-primary-dark hover:font-semibold transition-colors duration-300 ease-in-out
 }
 
+.greenBtnMarginOff {
+    @apply uppercase bg-primary-dark rounded-lg py-1 text-white text-sm shadow-sm shadow-black hover:bg-primary-light hover:text-primary-dark hover:font-semibold transition-colors duration-300 ease-in-out
+}
+
 .transitionReScale {
     @apply transition-transform duration-300 ease-in-out hover:scale-110
 }
@@ -140,6 +144,9 @@ input[type=number] {
     .xs\:text-sm {
         font-size: 0.875rem;
         line-height: 1.25rem;
+    }
+    .xs\:w-fit {
+        width: fit-content;
     }
 }
 
