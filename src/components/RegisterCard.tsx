@@ -23,7 +23,7 @@ export default function RegisterCard() {
         <span className='text-sm mb-3 font-semibold'>Juntos tornamos o mundo melhor</span>
         <AuthInput mode="register" inputType='email' text={emailText} onWrite={handleWriteEmail} />
         <AuthInput mode="register" inputType='password' text={passwordText} onWrite={handleWritePassword} />
-        <GreenBtn text='Registar' />
+        <GreenBtn text='Registar' margin={true} />
     </div>
   )
 }

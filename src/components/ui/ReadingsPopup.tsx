@@ -1,10 +1,10 @@
 'use client'
 
 import { FC, useState } from 'react'
-import ReadingPopupInput from './ReadingPopupInput'
-import ReadingPopupDatepicker from './ReadingPopupDatepicker'
+import ReadingPopupInput from '@/ui/PopupInput'
+import ReadingPopupDatepicker from '@/ui/PopupDatePicker'
 import dayjs, { Dayjs } from 'dayjs'
-import ReadingPopupButton from './ReadingPopupButton'
+import ReadingPopupButton from '@/ui/PopupButton'
 
 
 interface ReadingsPopupProps {
@@ -24,6 +24,7 @@ const ReadingsPopup: FC<ReadingsPopupProps> = ({onClose, onSave}) => {
     setNumberWrite(text);
   }
 
+  // AO SALVAR É PRECISO VERIFIAR SE OS VALORES ESTÃO VAZIOS
   return (
     <div className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-20'>
         <div className='bg-white rounded-lg p-4 shadow shadow-black flex flex-col'>
