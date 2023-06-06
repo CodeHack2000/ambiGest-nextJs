@@ -1,6 +1,6 @@
 @tailwind base;
-@tailwind components;
 @tailwind utilities;
+@tailwind components;
 
 .secondMenuItem {
     @apply text-primary-dark absolute uppercase hidden group-hover:inline text-right text-sm
