@@ -3,6 +3,7 @@ import React from 'react'
 import { FC } from 'react'
 import NavbarSmallSecondMenuItem from '@/ui/NavbarSmallSecondMenuItem'
 
+//changed
 interface NavbarSmallSecondMenuProps {
   isUserLogged: Boolean
 }

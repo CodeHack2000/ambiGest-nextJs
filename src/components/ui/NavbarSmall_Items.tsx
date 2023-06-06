@@ -3,6 +3,7 @@ import React from 'react'
 
 import { FC } from 'react'
 
+// changed
 interface NavbarSmall_ItemsProps {
   isUserLogged: Boolean
 }
