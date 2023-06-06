@@ -8,7 +8,7 @@ interface InvoicesItemProps {
   increase: number
   total: number
 }
-
+//changed
 const InvoicesItem: FC<InvoicesItemProps> = ({month, spent, increase, total}) => {
   return (
     <div className='bg-blueCard text-white flex flex-col w-full xs:w-3/4 md:w-5/6 mb-3 rounded-lg py-3 px-4 shadow shadow-black'>
