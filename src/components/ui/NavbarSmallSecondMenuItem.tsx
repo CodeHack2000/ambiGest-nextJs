@@ -3,7 +3,7 @@
 import getIcon from '@/lib/GetIcon'
 import Link from 'next/link'
 import { FC, useEffect, useState } from 'react'
-
+// changed
 interface NavbarSmallSecondMenuItemProps {
   name: String
 }

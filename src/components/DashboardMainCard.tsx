@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import UserSomeData from '@/ui/UserSomeData'
 import DashboardGraphic from '@/ui/DashboardGraphic'
-
+// changed
 interface DashboardMainCardProps {
   username: String
 }

@@ -7,6 +7,7 @@ import Navbar from "@/components/Navbar";
 import NavbarSmall from "@/components/NavbarSmall";
 import { useState } from "react";
 
+// changed
 export default function Home() {
   // Need to get username from backend
   const [username, setUsername] = useState("Tester")
