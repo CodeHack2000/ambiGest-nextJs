@@ -1,3 +1,4 @@
+//changed
 function createGetIconTypeObject(iconImg: String, uri: String): GetIconType {
     const getIconTypeObject: GetIconType = {
         iconImg,
