@@ -20,7 +20,7 @@ const PopupInput: FC<PopupInputProps> = ({writing, inputType, text, onChoose, va
             setImgUri("./images/readingWater.svg")
         }
         if (inputType === "collection") {
-            setImgUri("./images/plant.svg")
+            setImgUri("../images/plant.svg")
         }
     }, [inputType])
 

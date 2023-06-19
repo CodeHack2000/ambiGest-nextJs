@@ -52,8 +52,6 @@ const CollectionsCard: FC<CollectionsCardProps> = ({}) => {
   // É PRECISO TRATAR OS DADOS A SEREM SALVOS OBS.: NÃO ESQUECER QUE É NECESSÁRIO GUARDAR A LATITUDE E LONGITUDE DO LOCAL ONDE O CLIENTE DESEJA REALIZAR A RECOLHA
   const handePopupSave = (date: Dayjs, collectionType: string) => {
     setIsPopupOpen(false)
-    console.log(date)
-    console.log(collectionType)
   }
 
   return (

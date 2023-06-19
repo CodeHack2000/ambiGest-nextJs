@@ -18,7 +18,7 @@ const PopupDatepicker: FC<PopupDatepickerProps> = ({setDate, date}) => {
   return (
     <div className='flex'>
         <img 
-          src='./images/date.svg'
+          src='../images/date.svg'
           width={40}
           height={40}
           className='mr-4'/>

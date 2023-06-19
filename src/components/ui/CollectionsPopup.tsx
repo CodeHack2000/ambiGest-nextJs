@@ -5,6 +5,7 @@ import PopupInput from '@/ui/PopupInput'
 import PopupDatepicker from '@/ui/PopupDatePicker'
 import dayjs, { Dayjs } from 'dayjs'
 import PopupButton from '@/ui/PopupButton'
+import Link from 'next/link'
 
 
 interface CollectionsPopupProps {
@@ -34,7 +35,7 @@ const CollectionsPopup: FC<CollectionsPopupProps> = ({onClose, onSave}) => {
             </div>
             <div className='flex justify-evenly mt-4'>
                 <PopupButton btnAction={onClose} type='cancel' />
-                <PopupButton btnAction={() => onSave(selectedDate, collection)} type='save' />
+                <Link href="/schedules"><PopupButton btnAction={() => onSave(selectedDate, collection)} type='save' /></Link>
             </div>
         </div>
     </div>

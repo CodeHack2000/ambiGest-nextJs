@@ -8,7 +8,7 @@ export default function HeaderLogo () {
         <Link href="/">
           <div className='mt-8 mb-10'>
             <img 
-                src='./images/logo.svg'
+                src='../images/logo.svg'
                 width="200dp"
                 height="100dp"
                 className='group-hover:scale-110 transition-transform duration-300 ease-in-out'/>
