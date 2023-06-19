@@ -42,7 +42,7 @@ const NavbarSmall: FC<NavbarSmallProps> = ({isUserLogged}) => {
                 </div>
                 <Link href="/" className='text-white ml-3 text-2xl font-semibold tracking-wide'>ambiGest</Link>
             </div>
-            <div className='flex justify-end mr-2 py-1 px-2'>
+            <div className='flex justify-end xs:mr-2 py-1 px-2'>
                 <NavbarSmallSecondMenu isUserLogged={isUserLogged} />
             </div>
         </div>
