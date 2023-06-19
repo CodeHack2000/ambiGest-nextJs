@@ -7,7 +7,7 @@ interface AuthInputProps {
   mode: String
   inputType: string
 }
-// changed
+
 const AuthInput: FC<AuthInputProps> = ({mode, inputType}) => {
     const [labelText, setLabelText] = useState("")
     const [inputPlaceholder, setInputPlaceholder] = useState("")

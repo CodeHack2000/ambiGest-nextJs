@@ -1,7 +1,7 @@
 'use client'
 
 import { FC, useEffect, useState } from 'react'
-// changed
+
 interface AuthButtonProps {
   mode: String
 }
