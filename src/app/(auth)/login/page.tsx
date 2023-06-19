@@ -4,7 +4,6 @@ import NavbarSmall from '@/components/NavbarSmall'
 import Link from 'next/link'
 import {FC} from 'react'
 
-// changed
 const page: FC = () => {
     return (
         <div>

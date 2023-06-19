@@ -4,7 +4,6 @@ import RegisterCard from '@/components/RegisterCard'
 import Link from 'next/link'
 import {FC} from 'react'
 
-// changed
 const page: FC = () => {
     return (
         <div>

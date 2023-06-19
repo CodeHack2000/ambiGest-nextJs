@@ -2,7 +2,6 @@ import React from 'react'
 import AuthButton from '@/ui/AuthButton'
 import AuthInput from '@/ui/AuthInput'
 
-// changed
 export default function ForgotPasswordCard() {
   return (
     <div className='mx-8 shadow-md shadow-black flex flex-col justify-center px-10 rounded-xl customAuthCardScreen'>

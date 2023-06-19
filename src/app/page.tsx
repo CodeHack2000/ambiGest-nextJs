@@ -8,6 +8,7 @@ import NavbarSmall from "@/components/NavbarSmall";
 import { useState } from "react";
 
 export default function Home() {
+  // Need to get username from backend
   const [username, setUsername] = useState("Tester")
 
   return (
