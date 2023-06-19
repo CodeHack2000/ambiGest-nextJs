@@ -5,7 +5,7 @@ import DashboardGraphic from '@/ui/DashboardGraphic'
 interface DashboardMainCardProps {
   username: String
 }
-//changed
+
 const DashboardMainCard: FC<DashboardMainCardProps> = ({username}) => {
   return (
     <div className='mainCard xs:flex-row xs:mx-2 justify-evenly'>

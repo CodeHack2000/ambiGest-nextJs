@@ -1,7 +1,7 @@
 import React from 'react'
 import AuthButton from '@/ui/AuthButton'
 import AuthInput from '@/ui/AuthInput'
-//changed
+
 export default function RegisterCard() {
   return (
     <div className='mediumCard'>

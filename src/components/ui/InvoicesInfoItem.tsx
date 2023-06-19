@@ -6,7 +6,7 @@ interface InvoicesInfoItemProps {
   title: String
   value: Number
 }
-//changed
+
 const InvoicesInfoItem: FC<InvoicesInfoItemProps> = ({ title, value}) => {
     const [circleClass, setCircleClass] = useState("")
     const [valueClass, setValueClass] = useState("")

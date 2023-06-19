@@ -4,7 +4,7 @@ import InvoicesItem from '@/ui/InvoicesItem'
 interface InvoicesCardProps {
   
 }
-// changed
+
 const InvoicesCard: FC<InvoicesCardProps> = ({}) => {
   return (
     <div className='mediumCard xs:h-card h-full'>
