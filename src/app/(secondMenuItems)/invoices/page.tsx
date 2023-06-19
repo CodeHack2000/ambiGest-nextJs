@@ -3,7 +3,7 @@ import InvoicesCard from "@/components/InvoicesCard";
 import Navbar from "@/components/Navbar";
 import NavbarSmall from "@/components/NavbarSmall";
 import { FC } from "react";
-// changed
+
 const page: FC = () => {
     return (
         <div>

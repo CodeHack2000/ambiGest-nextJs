@@ -6,7 +6,7 @@ import { FC } from 'react'
 interface NavbarSmall_ItemsProps {
   isUserLogged: Boolean
 }
-//changed
+
 const NavbarSmall_Items: FC<NavbarSmall_ItemsProps> = ({isUserLogged}) => {
   return (
     <>

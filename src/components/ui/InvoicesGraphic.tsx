@@ -7,7 +7,7 @@ interface InvoicesGraphicProps {
   progress: number,
   increase: number
 }
-// changed
+
 const InvoicesGraphic: FC<InvoicesGraphicProps> = ({progress = 0, increase = 0}) => {
     const [isClient, setIsClient] = useState(false)
     const [colors, setColors] = useState<string[]>([])
