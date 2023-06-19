@@ -1,6 +1,6 @@
 @tailwind base;
-@tailwind components;
 @tailwind utilities;
+@tailwind components;
 
 .secondMenuItem {
     @apply text-primary-dark absolute uppercase hidden group-hover:inline text-right text-sm
@@ -64,6 +64,14 @@
         margin-left: 6rem;
         margin-right: 6rem;
     }
+}
+
+.customMainCardScreen {
+    @apply w-full sm:w-3/4 customMd:w-2/3 lg:w-3/4 xl:w-3/5 transition-width duration-1000 ease-in-out
+}
+
+.customAuthCardScreen {
+    @apply w-full sm:w-3/4 md:w-2/4 lg:w-2/5 xl:w-2/6 transition-width duration-1000 ease-in-out
 }
 
 /*ScrollBar*/

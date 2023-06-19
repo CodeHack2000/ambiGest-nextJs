@@ -27,7 +27,7 @@ const page: FC = () => {
                     <RegisterCard />
                 </div>
                 <div className='flex justify-center mt-8 mx-8'>
-                    <div className='textExtraSmall customMd:w-1/2 font-semibold lg:w-2/5'>
+                    <div className='textExtraSmall font-semibold customAuthCardScreen'>
                         Ao criar uma conta, você concorda com os <span className='text-primary-dark'>Termos de Serviço</span>. Para obter mais informações sobre a práticas de privacidade do ambiGest, consulte a <span className='text-primary-dark'>Declaração de Privacidade do ambiGest</span>.
                     </div>
                 </div>
