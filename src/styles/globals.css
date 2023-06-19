@@ -18,6 +18,10 @@
     @apply w-full py-1 bg-customGray pl-4 my-4 rounded-lg
 }
 
+.blueBtn {
+    @apply border-2 border-pizzaGraphic bg-pizzaGraphic opacity-80 text-blueCard rounded-lg font-bold shadow-sm shadow-black hover:bg-pizzaGraphic hover:text-white hover:opacity-100 hover:font-semibold hover:scale-105 transition-all duration-500 ease-in-out
+}
+
 .transitionReScale {
     @apply transition-transform duration-300 ease-in-out hover:scale-110
 }
@@ -31,6 +35,11 @@
     line-height: 1rem;
 }
 
+.textSmall {
+    font-size: 0.77rem;
+    line-height: 1rem;
+}
+
 .outlineButton {
     @apply border border-primary-dark text-primary-dark rounded-lg hover:bg-primary-light hover:border-primary-light hover:font-bold transition-colors duration-500 ease-in-out font-semibold text-center
 }
@@ -41,6 +50,16 @@
 
 .mainCard {
     @apply mx-4 shadow shadow-black rounded-xl flex flex-col px-4 items-center customMainCardScreen
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
 }
 
 @media (min-width: 900px) {
@@ -109,6 +128,10 @@
     }
     .xs\:h-card {
         height: 27rem;
+    }
+    .xs\:text-sm {
+        font-size: 0.875rem;
+        line-height: 1.25rem;
     }
 }
 

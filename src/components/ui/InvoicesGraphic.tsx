@@ -1,7 +1,7 @@
 'use client'
 
 import { FC, useEffect, useState } from 'react'
-import { Cell, Pie, PieChart, Label } from 'recharts';
+import { Cell, Pie, PieChart } from 'recharts';
 
 interface InvoicesGraphicProps {
   progress: number,
