@@ -2,7 +2,6 @@ import React from 'react'
 import AuthButton from '@/ui/AuthButton'
 import AuthInput from '@/ui/AuthInput'
 
-// changed
 export default function RegisterCard() {
   return (
     <div className='w-full mx-8 customMd:w-1/2 shadow-md shadow-black flex flex-col justify-center px-10 rounded-xl lg:w-2/5'>

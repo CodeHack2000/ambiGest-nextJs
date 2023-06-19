@@ -1,7 +1,6 @@
 import React from 'react'
 import ContactsSocial from './ContactsSocial'
 
-// changed
 export default function ContactsCard() {
   return (
     <div className='w-full sm:w-1/2 mx-8 shadow-md shadow-black flex justify-center px-10 rounded-xl lg:w-2/5 mt-20 h-80 lg:h-96'>
