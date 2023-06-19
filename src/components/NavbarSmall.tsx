@@ -7,7 +7,6 @@ import { FC } from 'react'
 import Link from 'next/link'
 import NavbarSmallSecondMenu from './ui/NavbarSmallSecondMenu'
 
-// changed
 interface NavbarSmallProps {
   isUserLogged: Boolean
 }
