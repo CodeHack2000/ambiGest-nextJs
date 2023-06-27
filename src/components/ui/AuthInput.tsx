@@ -33,7 +33,7 @@ const AuthInput: FC<AuthInputProps> = ({mode, inputType, text, onWrite}) => {
             }
         } else if (mode === "forgotPassword") {
             setInputPlaceholder("Insira o seu email")
-        }
+        } 
     }, [mode, inputType])
 
   return (
