@@ -10,7 +10,7 @@ export default function Navbar() {
         <Link href="/invoices" className='navbarItem'>
             Faturação
         </Link>
-        <Link href="#" className='navbarItem'>
+        <Link href="/schedules" className='navbarItem'>
             Agenda
         </Link>
         <Link href="/readings" className='navbarItem'>
