@@ -7,6 +7,7 @@ import dayjs from 'dayjs'
 import randomColor from 'randomcolor'
 import { FC } from 'react'
 import GreenBtn from '@/ui/GreenBtn'
+import Link from 'next/link'
 
 interface EventAuxType {
     title: string
@@ -80,7 +81,7 @@ const SchedulesCard: FC<SchedulesCardProps> = ({events}) => {
     <div className='bigCard'>
         <div className='flex justify-between items-center'>
             <span className='font-bold text-xl'>Agendamentos</span>
-            <GreenBtn text='Nova Recolha' props='px-2'/>
+            <Link href="schedules/collections"><GreenBtn text='Nova Recolha' props='px-2' margin={true}/></Link>
         </div>
         <div className='h-full'>
             <SchedulesCalendar events={filteredEvents} onMonthChange={onMonthChange} />
