@@ -51,8 +51,6 @@ export default function LoginCard() {
             setTimeout(() => {
               router.push('/')
             }, 2000)
-          } else {
-            toast.error("Login sem sucesso!")
           }
         } else if (response.status === 401) {
           toast.warning("É preciso validar o email!")
@@ -62,6 +60,7 @@ export default function LoginCard() {
         }
       } catch (error) {
         console.log('Error: ', error)
+        toast.error("Login sem sucesso!")
       }
     }
   }
