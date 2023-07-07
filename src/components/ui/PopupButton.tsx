@@ -31,7 +31,7 @@ const PopupButton: FC<PopupButtonProps> = ({type, btnAction}) => {
     }, [type])
 
   return (
-    <button type='button' onClick={btnAction}>{btnText}</button>
+    <button type='button' onClick={btnAction} className={btnStyle}>{btnText}</button>
   )
 }
 

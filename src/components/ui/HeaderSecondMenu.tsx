@@ -1,10 +1,8 @@
 import React from 'react'
 import HeaderSecondMenuItem from '@/ui/HeaderSecondMenuItem'
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
+import handleLogout from '@/helpers/userLogout'
 import { FC } from 'react'
-import { useRouter } from 'next/navigation'
+import { useRouter } from "next/navigation"
 
 interface HeaderSecondMenuProps {
   isUserLogged: Boolean
@@ -13,28 +11,11 @@ interface HeaderSecondMenuProps {
 const HeaderSecondMenu: FC<HeaderSecondMenuProps> = ({isUserLogged}) => {
   const router = useRouter()
 
-  const handleLogout = async () => {
-    try {
-      const token = localStorage.getItem('jwtToken')
-      const baseUrl = process.env.DEV_BASE_URL
-      const url = baseUrl + 'auth/logout'
+  const handleUserLogout = async () => {
+    const logoutStatus = await handleLogout()
 
-      const response = await fetch(url, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
-        },
-      })
-
-      if (response.status === 204) {
-        toast.success('Logout com sucesso!')
-        localStorage.clear()
-        router.push('/login')
-      }
-    } catch (error) {
-      console.log('Error: ', error)
-    }
+    if (logoutStatus)
+      router.push("/login")
   }
 
   return (
@@ -57,10 +38,9 @@ const HeaderSecondMenu: FC<HeaderSecondMenuProps> = ({isUserLogged}) => {
               <HeaderSecondMenuItem name="phone" isUserLogged={true}/>
               <div className='secondMenuItem' style={{marginTop: "5.3rem", right: "8.1rem"}}>Contactos</div>
             </div>
-            <div className='group' onClick={handleLogout}>
+            <div className='group' onClick={handleUserLogout}>
               <HeaderSecondMenuItem name="logout" isUserLogged={true}/>
               <div className='secondMenuItem' style={{marginTop: "5.3rem", right: "4.5rem"}}>Logout</div>
-              <ToastContainer />
             </div>
           </>
         ) : (

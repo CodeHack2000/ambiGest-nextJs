@@ -14,25 +14,34 @@ interface PopupInputProps {
 
 const PopupInput: FC<PopupInputProps> = ({writing, inputType, text, onChoose, value}) => {
     const [imgUri, setImgUri] = useState("")
+    const [customSize, setCustomSize] = useState(40)
 
     useEffect(() => {
         if (inputType === "number") {
             setImgUri("./images/readingWater.svg")
+            setCustomSize(40)
         }
         if (inputType === "collection") {
             setImgUri("../images/plant.svg")
+            setCustomSize(40)
+        }
+        if (inputType === "username") {
+            setImgUri("../images/pencil.svg")
+            setCustomSize(30)
+        }
+        if (inputType === "email") {
+            setImgUri("../images/email.svg")
+            setCustomSize(30)
+        }
+        if (inputType === "password") {
+            setImgUri("../images/key.svg")
+            setCustomSize(30)
         }
     }, [inputType])
 
-  return (
-    <div className='flex justify-between items-center my-4'>
-        <img 
-            src={imgUri}
-            width={40}
-            height={40}
-            className='mr-4'/>
-        <div className='w-56'>
-            {inputType === "number" ? (
+    const getForm = () => {
+        if (inputType === "number") {
+            return (
                 <FormControl variant='outlined'>
                     <OutlinedInput 
                         id='fullWidth'
@@ -45,7 +54,9 @@ const PopupInput: FC<PopupInputProps> = ({writing, inputType, text, onChoose, va
                         value={text}
                         onChange={writing != undefined ? ((event) => writing(event.target.value)) : (undefined)}/>
                 </FormControl>
-            ) : (
+            )
+        } else if (inputType === "collection") {
+            return (
                 // É NECESSÁRIO CRIAR AS OPÇÕES DE RECOLHA
                 <FormControl fullWidth>
                     <NativeSelect
@@ -56,7 +67,49 @@ const PopupInput: FC<PopupInputProps> = ({writing, inputType, text, onChoose, va
                             <option value="Pilhas">Pilhas</option>
                     </NativeSelect>
                 </FormControl>
-            )}
+            )
+        } else if (inputType === "username" || inputType === "email") {
+            return (
+                <FormControl variant='outlined'>
+                    <OutlinedInput 
+                        id='fullWidth'
+                        placeholder={inputType}
+                        type='text'
+                        aria-describedby="filled-weight-helper-text"
+                        inputProps={{
+                            'aria-label': 'weight',
+                        }}
+                        value={text}
+                        onChange={writing != undefined ? ((event) => writing(event.target.value)) : (undefined)}/>
+                </FormControl>
+            )
+        } else if (inputType === "password") {
+            return (
+                <FormControl variant='outlined'>
+                    <OutlinedInput 
+                        id='fullWidth'
+                        placeholder={inputType}
+                        type='password'
+                        aria-describedby="filled-weight-helper-text"
+                        inputProps={{
+                            'aria-label': 'weight',
+                        }}
+                        value={text}
+                        onChange={writing != undefined ? ((event) => writing(event.target.value)) : (undefined)}/>
+                </FormControl>
+            )
+        }
+    }
+
+  return (
+    <div className='flex justify-between items-center my-4'>
+        <img 
+            src={imgUri}
+            width={customSize}
+            height={customSize}
+            className='mr-4'/>
+        <div className='w-56'>
+            {getForm()}
         </div>
     </div>
   )
