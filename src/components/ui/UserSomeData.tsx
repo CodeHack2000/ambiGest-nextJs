@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { FC } from 'react'
+import UserBasicInfo from '@/ui/UserBasicInfo'
 
 interface UserSomeDataProps {
   username: String
@@ -8,13 +9,7 @@ interface UserSomeDataProps {
 const UserSomeData: FC<UserSomeDataProps> = ({username}) => {
   return (
     <div className='flex flex-col items-center py-4'>
-        {/* PRECISAMOS DE PENSAR COMO RECEBER OS DADOS DO UTILIZADOR */}
-        <span className='font-semibold text-lg'>Meu Perfil</span>
-        <div className='w-32 rounded-3xl shadow shadow-black my-4'>
-            <img
-            src='/images/avatar.svg'/>
-        </div>
-        <span className='font-semibold'>{username}</span>
+        <UserBasicInfo username={username} />
         <div className='flex items-center'>
             <Link href="#" className='p-1 mr-2 outlineButton'>
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
