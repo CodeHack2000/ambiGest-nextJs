@@ -1,13 +1,15 @@
 'use client'
 
-import { FC} from 'react'
-import { CartesianGrid, Label, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
+import { FC, useEffect, useState} from 'react'
+import { CartesianGrid, Label, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
 
 interface ReadingsGraphicProps {
-  dataset: ReadingsGraphicDataType[]
+  dataset: ReadingsDatasetType[]
 }
 
 const ReadingsGraphic: FC<ReadingsGraphicProps> = ({dataset = []}) => {
+  const [newDataset, setNewDataset] = useState<ReadingsGraphicDataType[]>([])
+
     const customCSS = `
     .recharts-text.recharts-label {
       fill: #65B000;
@@ -21,6 +23,15 @@ const ReadingsGraphic: FC<ReadingsGraphicProps> = ({dataset = []}) => {
 
   const tooltipFormatter = (value: any) => `${value} m³`;
 
+  useEffect(() => {
+    const transformedDataset = dataset.map(item => ({
+      name: item.reading_date.substring(5, 7),
+      consumo: item.amount
+    }))
+
+    setNewDataset(transformedDataset)
+  }, [dataset])
+
   return (
     <>
         <style>{customCSS}</style>
@@ -28,7 +39,7 @@ const ReadingsGraphic: FC<ReadingsGraphicProps> = ({dataset = []}) => {
         <LineChart
             width={500}
             height={300}
-            data={dataset}
+            data={newDataset}
             margin={{
                 top: 5,
                 right: 5,
