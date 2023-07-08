@@ -1,10 +1,65 @@
+'use client'
+
 import Header from "@/components/Header";
 import InvoicesCard from "@/components/InvoicesCard";
 import Navbar from "@/components/Navbar";
 import NavbarSmall from "@/components/NavbarSmall";
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import getUserFromBackend from "@/helpers/getUserFromBackend"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-const page: FC = () => {
+const Page: FC = () => {
+    const router = useRouter()
+    const [constractValue, setContractValue] = useState(0)
+
+    useEffect(() => {
+        const getUserContract = async () => {
+            try {
+                const baseUrl = process.env.DEV_BASE_URL
+                const url = baseUrl + 'water-contract'
+                const token = localStorage.getItem('jwtToken')
+
+                const response = await fetch(url, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    }
+                })
+
+                if (response.status === 404) {
+                    toast.warning("O utilizador não possui um contrato.")
+                } else if (response.status === 401) {
+                    toast.error("O token é inválido!")
+                    router.push('/')
+                } else if (response.status === 200) {
+                    const data = await response.json()
+                    setContractValue(data.value_per_m3)
+                }
+            } catch (error) {
+                console.log('Error: ', error)
+            }
+        }
+
+        const getUser = async () => {
+          const user = await getUserFromBackend()
+          if (user === "") {
+            localStorage.clear()
+            router.push('/login')
+          } else {
+            getUserContract()
+          }
+        }
+    
+        if (!localStorage.getItem('jwtToken')) {
+          router.push('/login')
+        } else {
+          getUser()
+        }
+    }, [])
+
     return (
         <div>
             <header className="hidden customMd:inline">
@@ -19,10 +74,11 @@ const page: FC = () => {
                 </div>
             </nav>
             <main className="flex justify-center mb-10 mt-10">
-                <InvoicesCard />
+                <InvoicesCard pricePerM3={constractValue}/>
+                <ToastContainer />
             </main>
         </div>
     )
 }
 
-export default page
+export default Page
