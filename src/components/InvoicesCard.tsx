@@ -1,20 +1,70 @@
 'use client'
 
-import { FC, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import InvoicesItem from '@/ui/InvoicesItem'
 import InvoicesContractData from '@/ui/InvoicesContractData'
 import InvoicesPopup from './ui/InvoicesPopup'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from 'next/navigation'
+import dayjs from "dayjs";
+import 'dayjs/locale/pt'
 
 interface InvoicesCardProps {
-  pricePerM3: number
+  pricePerM3: number,
+  contractExists: boolean
 }
 
-const InvoicesCard: FC<InvoicesCardProps> = ({pricePerM3}) => {
+const InvoicesCard: FC<InvoicesCardProps> = ({pricePerM3, contractExists}) => {
   const [isPopupOpen, setIsPopupOpen] = useState(false)
+  const [invoicesBillDataset, setInvoicesBillDataset] = useState<InvoicesBillType[]>([])
+    const [finishedDataset, setFinishedDataset] = useState(false)
   const router = useRouter()
+
+  useEffect(() => {
+    const getUserWaterBillInvoice = async () => {
+      try {
+          const baseUrl = process.env.DEV_BASE_URL
+          const url = baseUrl + 'water-bill-invoice'
+          const token = localStorage.getItem('jwtToken')
+
+          toast.loading("Carregando as leituras...")
+
+          const response = await fetch(url, {
+              method: 'GET',
+              headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': `Bearer ${token}`
+              }
+          })
+
+          if (response.status === 200) {
+              const data = await response.json()
+              const newDataset: InvoicesBillType[] = data.map((item: any) => ({
+                  consumption: item.consumption,
+                  increase: item.increased_amount,
+                  total: item.billing_value,
+                  date: dayjs(item.invoice_date).format('MMMM'),
+                  id: item._id
+              }))
+              toast.dismiss()
+
+              setInvoicesBillDataset(newDataset)
+              setFinishedDataset(true)
+          } else if (response.status === 401) {
+              toast.error('O token é inválido!')
+              router.push('/')
+          } else if (response.status === 404) {
+              toast.warning('Não existem faturas salvas !')
+          }
+      } catch (error) {
+          console.log('Error: ', error)
+      }
+    }
+
+    if (contractExists)
+      getUserWaterBillInvoice()
+  }, [contractExists])
 
   const handlePopupOpen = () => {
     setIsPopupOpen(true)
@@ -94,7 +144,6 @@ const InvoicesCard: FC<InvoicesCardProps> = ({pricePerM3}) => {
     }
   }
 
-  // <InvoicesItem month="Janeiro" spent={16.2} increase={-0.5} total={22.90} />
   return (
     <div className='mediumCard xs:h-card h-full'>
       <div>
@@ -105,7 +154,9 @@ const InvoicesCard: FC<InvoicesCardProps> = ({pricePerM3}) => {
       <span className='font-bold mt-6 text-xl mb-2'>As minhas faturas</span>
       <InvoicesContractData pricePerM3={pricePerM3} action={handlePopupOpen}/>
       <div className='my-2 overflow-y-auto overflow-x-hidden scroll-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100 w-full flex flex-col items-center'>
-        {/** AQUI FICA O INVOICES ITEM */}
+        {invoicesBillDataset && invoicesBillDataset.length > 0 && finishedDataset && invoicesBillDataset.map((item, index) => (
+          <InvoicesItem key={index} month={item.date} spent={item.consumption} increase={item.increase} total={item.total} />
+        ))}
       </div>
       <ToastContainer />
     </div>

@@ -13,6 +13,8 @@ import 'react-toastify/dist/ReactToastify.css';
 const Page: FC = () => {
     const router = useRouter()
     const [constractValue, setContractValue] = useState(0)
+    const [contractExists, setContractExists] = useState(false)
+    const [pickedContract, setPickedContract] = useState(false)
 
     useEffect(() => {
         const getUserContract = async () => {
@@ -37,7 +39,9 @@ const Page: FC = () => {
                 } else if (response.status === 200) {
                     const data = await response.json()
                     setContractValue(data.value_per_m3)
+                    setContractExists(true)
                 }
+                setPickedContract(true)
             } catch (error) {
                 console.log('Error: ', error)
             }
@@ -74,7 +78,9 @@ const Page: FC = () => {
                 </div>
             </nav>
             <main className="flex justify-center mb-10 mt-10">
-                <InvoicesCard pricePerM3={constractValue}/>
+                {pickedContract ? (
+                    <InvoicesCard pricePerM3={constractValue} contractExists={contractExists}/>
+                ) : null}
                 <ToastContainer />
             </main>
         </div>
