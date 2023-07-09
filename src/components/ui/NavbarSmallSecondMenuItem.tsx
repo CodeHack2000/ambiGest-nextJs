@@ -4,8 +4,7 @@ import getIcon from '@/lib/GetIcon'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { FC, useEffect, useState } from 'react'
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import handleLogout from '@/helpers/userLogout'
 
 interface NavbarSmallSecondMenuItemProps {
   name: String
@@ -23,36 +22,18 @@ const NavbarSmallSecondMenuItem: FC<NavbarSmallSecondMenuItemProps> = ({name}) =
         setUri(iconData.uri.toString())
     }, [name])
 
-    const handleLogout = async () => {
-      try {
-        const token = localStorage.getItem('jwtToken')
-        const baseUrl = process.env.DEV_BASE_URL
-        const url = baseUrl + 'auth/logout'
+    const handleUserLogout = async () => {
+      const logoutStatus = await handleLogout()
   
-        const response = await fetch(url, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-          },
-        })
-  
-        if (response.status === 204) {
-          toast.success('Logout com sucesso!')
-          localStorage.clear()
-          router.push('/login')
-        }
-      } catch (error) {
-        console.log('Error: ', error)
-      }
+      if (logoutStatus)
+        router.push("/login")
     }
 
   return (
     <>
       {name === "logout" ? (
           <>
-            <div onClick={handleLogout} dangerouslySetInnerHTML={{__html: iconImg}} className='w-5 h-5 xs:iconSize xs:mx-2 transitionReScale mx-1 text-white'></div>
-            <ToastContainer />
+            <div onClick={handleUserLogout} dangerouslySetInnerHTML={{__html: iconImg}} className='w-5 h-5 xs:iconSize xs:mx-2 transitionReScale mx-1 text-white'></div>
           </>
       ) : (
         <Link href={uri}>
