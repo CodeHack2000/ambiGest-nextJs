@@ -25,7 +25,8 @@ module.exports = {
         pizzaGraphic: "#71C4C3",
         customGreen: "#3BED04",
         customPurple: "#88A1E1",
-        customRed: "#EE6E59"
+        customRed: "#EE6E59",
+        lightRed: "#FF6666"
       }
     },
   },

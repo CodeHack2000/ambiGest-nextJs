@@ -3,4 +3,5 @@ type EventType = {
     date: string
     time: string
     color: string
+    id: string
 }

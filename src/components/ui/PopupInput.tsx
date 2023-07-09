@@ -8,11 +8,11 @@ interface PopupInputProps {
     writing?: (text: string) => void
     text?: string
     inputType: string
-    value?: string
     onChoose?: (text: string) => void
+    defaultValue?: string
 }
 
-const PopupInput: FC<PopupInputProps> = ({writing, inputType, text, onChoose, value}) => {
+const PopupInput: FC<PopupInputProps> = ({writing, inputType, text, onChoose, defaultValue}) => {
     const [imgUri, setImgUri] = useState("")
     const [customSize, setCustomSize] = useState(40)
 
@@ -37,6 +37,10 @@ const PopupInput: FC<PopupInputProps> = ({writing, inputType, text, onChoose, va
             setImgUri("../images/key.svg")
             setCustomSize(30)
         }
+        if (inputType === "dayTime") {
+            setImgUri("../images/dayTime.svg")
+            setCustomSize(40)
+        }
     }, [inputType])
 
     const getForm = () => {
@@ -57,14 +61,35 @@ const PopupInput: FC<PopupInputProps> = ({writing, inputType, text, onChoose, va
             )
         } else if (inputType === "collection") {
             return (
-                // É NECESSÁRIO CRIAR AS OPÇÕES DE RECOLHA
                 <FormControl fullWidth>
                     <NativeSelect
                         value={text}
-                        onChange={onChoose != undefined ? ((event) => onChoose(event.target.value)) : (undefined)}>
-                            <option value="Eletrodomésticos">Eletrodomésticos</option>
-                            <option value="Mobiliários">Mobiliários</option>
-                            <option value="Pilhas">Pilhas</option>
+                        onChange={onChoose != undefined ? ((event) => onChoose(event.target.value)) : (undefined)}
+                        defaultValue={defaultValue ? defaultValue : "Vidro"}>
+                            <option value="Vidro">Vidro</option>
+                            <option value="Resíduos Metálicos">Resíduos Metálicos</option>
+                            <option value="Resíduos Eletrónicos">Resíduos Eletrónicos</option>
+                            <option value="Papel e Cartão">Papel e Cartão</option>
+                            <option value="Plástico">Plástico</option>
+                            <option value="Resíduos Orgânicos">Resíduos Orgânicos</option>
+                            <option value="Óleo de Cozinha">Óleo de Cozinha</option>
+                            <option value="Roupa e Têxteis">Roupa e Têxteis</option>
+                            <option value="Entulho e Construção">Entulho e Construção</option>
+                            <option value="Medicamentos Vencidos">Medicamentos Vencidos</option>
+                            <option value="Lâmpadas">Lâmpadas</option>
+                    </NativeSelect>
+                </FormControl>
+            )
+        } else if (inputType === 'dayTime') {
+            return (
+                <FormControl fullWidth>
+                    <NativeSelect
+                        value={text}
+                        onChange={onChoose != undefined ? ((event) => onChoose(event.target.value)) : (undefined)}
+                        defaultValue={defaultValue ? defaultValue : "Manhã"}>
+                            <option value="Manhã">Manhã</option>
+                            <option value="Tarde">Tarde</option>
+                            <option value="Noite">Noite</option>
                     </NativeSelect>
                 </FormControl>
             )

@@ -9,19 +9,12 @@ import { FC } from 'react'
 import GreenBtn from '@/ui/GreenBtn'
 import Link from 'next/link'
 
-interface EventAuxType {
-    title: string
-    date: string
-    time: string
-}
-
 interface SchedulesCardProps {
-  events: EventAuxType[]
+  events: SchedulesDatasetType[]
 }
 
-// PRECISA DE RECEBER UMA LISTA DE EVENTOS/AGENDAMENTOS DO UTILIZADOR E CRIAR UMA NOVA LISTA DE AGENDAMENTOS ONDE É ATRIBUÍDA UMA COR PARA CADA EVENTO NO MêS SELECIONADO
 const SchedulesCard: FC<SchedulesCardProps> = ({events}) => {
-    const [filteredEvents, setFilteredEvents] = useState<EventType[]>([])
+    const [filteredEvents, setFilteredEvents] = useState<SchedulesDatasetType[]>([])
     const [colorsList, setColorsList] = useState<string[]>([])
 
     useEffect(() => {
@@ -41,15 +34,15 @@ const SchedulesCard: FC<SchedulesCardProps> = ({events}) => {
     useEffect(() => {
         const generateFilteredEvents = async () => {
             const currentDate = new Date()
-            const filteredAux = events.filter((event) => dayjs(event.date).get('month') === currentDate.getMonth())
+            const filteredAux = events.filter((event) => dayjs(event.pickup_at).get('month') === currentDate.getMonth())
     
             const filtered = filteredAux.map((event, index) => ({...event, color: colorsList[index+1]}))
             
             filtered.sort((event_a, event_b) =>
-                dayjs(event_a.date)
+                dayjs(event_a.pickup_at)
                 .date()
                 .toString()
-                .localeCompare(dayjs(event_b.date).date().toString(), 'en', { numeric: true })
+                .localeCompare(dayjs(event_b.pickup_at).date().toString(), 'en', { numeric: true })
             )
     
             setFilteredEvents(filtered)
@@ -60,15 +53,15 @@ const SchedulesCard: FC<SchedulesCardProps> = ({events}) => {
     
     const onMonthChange = async (month: number) => {
         const generateFilteredEvents = async () => {
-            const filteredAux = events.filter((event) => dayjs(event.date).get('month') === month)
+            const filteredAux = events.filter((event) => dayjs(event.pickup_at).get('month') === month)
     
             const filtered = filteredAux.map((event, index) => ({...event, color: colorsList[index+1]}))
             
             filtered.sort((event_a, event_b) =>
-                dayjs(event_a.date)
+                dayjs(event_a.pickup_at)
                 .date()
                 .toString()
-                .localeCompare(dayjs(event_b.date).date().toString(), 'en', { numeric: true })
+                .localeCompare(dayjs(event_b.pickup_at).date().toString(), 'en', { numeric: true })
             )
         
             setFilteredEvents(filtered)
