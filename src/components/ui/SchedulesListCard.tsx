@@ -4,7 +4,7 @@ import { FC, useState } from 'react'
 import SchedulesList from '@/ui/SchedulesList'
 
 interface SchedulesListCardProps {
-  events: EventType[]
+  events: SchedulesDatasetType[]
 }
 
 const SchedulesListCard: FC<SchedulesListCardProps> = ({events}) => {

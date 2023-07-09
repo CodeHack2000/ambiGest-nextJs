@@ -1,6 +1,6 @@
 // NÃO ESTOU A CONSEGUIR USAR O .env
 export async function getGeocodeByAddress(searchQuery: string) {
-    const API_KEY = 'BJifMBStKNxjsfeAghLc337jSzfQYm7b'
+    const API_KEY = process.env.GEOCODE_API_KEY
 
     const body = {
         "location": searchQuery,

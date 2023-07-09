@@ -7,6 +7,9 @@ import GreenBtn from '@/ui/GreenBtn'
 import { getGeocodeByAddress } from '@/helpers/map-geo-api'
 import CollectionsPopup from '@/ui/CollectionsPopup'
 import { Dayjs } from 'dayjs'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useRouter } from 'next/navigation'
 
 interface CollectionsCardProps {
   
@@ -16,6 +19,8 @@ const CollectionsCard: FC<CollectionsCardProps> = ({}) => {
   const [center, setCenter] = useState<[number, number]>([51.505, -0.09])
   const [search, setSearch] = useState("")
   const [isPopupOpen, setIsPopupOpen] = useState(false)
+
+  const router = useRouter()
 
   const handleSearchWrite = (txt: string) => {
     setSearch(txt)
@@ -42,6 +47,8 @@ const CollectionsCard: FC<CollectionsCardProps> = ({}) => {
   const handleBtnCreate = () => {
     if (search.length > 0) {
       setIsPopupOpen(!isPopupOpen)
+    } else {
+      toast.error("Selecione a sua localização!")
     }
   }
 
@@ -49,9 +56,52 @@ const CollectionsCard: FC<CollectionsCardProps> = ({}) => {
     setIsPopupOpen(false)
   }
 
-  // É PRECISO TRATAR OS DADOS A SEREM SALVOS OBS.: NÃO ESQUECER QUE É NECESSÁRIO GUARDAR A LATITUDE E LONGITUDE DO LOCAL ONDE O CLIENTE DESEJA REALIZAR A RECOLHA
-  const handePopupSave = (date: Dayjs, collectionType: string) => {
+  const handePopupSave = async (date: Dayjs, collectionType: string, dayTime: string) => {
     setIsPopupOpen(false)
+    const formattedDate = date.format('YYYY-MM-DD')
+    const latitude = center[0]
+    const longitude = center[1]
+
+    if (!collectionType || collectionType.length < 1 || !dayTime || dayTime.length < 1)
+      toast.error("Não pode haver campos vazios !")
+    else {
+      try {
+        const baseUrl = process.env.DEV_BASE_URL
+        const url = baseUrl + 'waste-collection'
+        const token = localStorage.getItem('jwtToken')
+  
+        const response = await fetch(url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+          body: JSON.stringify({
+            type: collectionType,
+            latitude: latitude,
+            longitude: longitude,
+            pickup_at: formattedDate,
+            time_of_day: dayTime
+          })
+        })
+  
+        if (response.status === 201) {
+          toast.success('Recolha agendada com sucesso!')
+           
+          setTimeout(() => {
+            router.push('/schedules')
+          }, 2000)
+        } else if (response.status === 401) {
+          toast.error("O token é inválido!")
+          router.push('/')
+        } else if (response.status === 400) {
+          toast.error("Ocorreu um erro, selecione outra data!")
+        }
+      } catch (error) {
+        toast.error('Ocorreu um erro, tente novamente !')
+        console.log(error)
+      }
+    }
   }
 
   return (
@@ -71,6 +121,7 @@ const CollectionsCard: FC<CollectionsCardProps> = ({}) => {
           <CollectionMap center={center} />
         </div>
       </div>
+      <ToastContainer />
     </div>
   )
 }

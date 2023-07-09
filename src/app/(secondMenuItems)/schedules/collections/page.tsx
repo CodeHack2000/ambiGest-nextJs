@@ -1,10 +1,32 @@
+'use client'
+
 import CollectionsCard from "@/components/CollectionsCard";
 import Header from "@/components/Header";
 import Navbar from "@/components/Navbar";
 import NavbarSmall from "@/components/NavbarSmall";
-import { FC } from "react";
+import { FC, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import getUserFromBackend from "@/helpers/getUserFromBackend"
 
-const page: FC = () => {
+const Page: FC = () => {
+    const router = useRouter()
+
+    useEffect(() => {
+        const getUser = async () => {
+            const user = await getUserFromBackend()
+            if (user === "") {
+              localStorage.clear()
+              router.push('/login')
+            } 
+        }
+      
+        if (!localStorage.getItem('jwtToken')) {
+            router.push('/login')
+        } else {
+            getUser()
+        } 
+    }, [])
+
     return (
         <div>
             <header className="hidden customMd:inline">
@@ -25,4 +47,4 @@ const page: FC = () => {
     )
 }
 
-export default page
+export default Page

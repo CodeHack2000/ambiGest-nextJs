@@ -28,7 +28,7 @@ const InvoicesCard: FC<InvoicesCardProps> = ({pricePerM3, contractExists}) => {
           const url = baseUrl + 'water-bill-invoice'
           const token = localStorage.getItem('jwtToken')
 
-          toast.loading("Carregando as leituras...")
+          toast.loading("Carregando as faturas...")
 
           const response = await fetch(url, {
               method: 'GET',
