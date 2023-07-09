@@ -1,10 +1,20 @@
+'use client'
+
 import Header from '@/components/Header'
 import LoginCard from '@/components/LoginCard'
 import NavbarSmall from '@/components/NavbarSmall'
 import Link from 'next/link'
-import {FC} from 'react'
+import { useRouter } from 'next/navigation'
+import {FC, useEffect} from 'react'
 
-const page: FC = () => {
+const Page: FC = () => {
+    const router = useRouter()
+
+    useEffect(() => {
+        if (localStorage.getItem('jwtToken'))
+            router.push('/')
+    }, [])
+
     return (
         <div>
             <header className='hidden customMd:inline'>
@@ -28,4 +38,4 @@ const page: FC = () => {
     )
 }
 
-export default page
+export default Page

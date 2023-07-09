@@ -5,11 +5,31 @@ import DashboardSecondaryCard from "@/components/DashboardSecondaryCard";
 import Header from "@/components/Header";
 import Navbar from "@/components/Navbar";
 import NavbarSmall from "@/components/NavbarSmall";
-import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import getUserFromBackend from "@/helpers/getUserFromBackend"
 
 export default function Home() {
-  // Need to get username from backend
   const [username, setUsername] = useState("Tester")
+  const router = useRouter()
+
+  useEffect(() => {
+    const getUser = async () => {
+      const user = await getUserFromBackend()
+      if (user === "") {
+        localStorage.clear()
+        router.push('/login')
+      } else {
+        setUsername(user)
+      }
+    }
+
+    if (!localStorage.getItem('jwtToken')) {
+      router.push('/login')
+    } else {
+      getUser()
+    }
+  }, [])
 
   return (
     <div className="select-none">

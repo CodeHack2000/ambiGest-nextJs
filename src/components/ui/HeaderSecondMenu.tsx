@@ -1,13 +1,42 @@
 import React from 'react'
 import HeaderSecondMenuItem from '@/ui/HeaderSecondMenuItem'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { FC } from 'react'
+import { useRouter } from 'next/navigation'
 
 interface HeaderSecondMenuProps {
   isUserLogged: Boolean
 }
 
 const HeaderSecondMenu: FC<HeaderSecondMenuProps> = ({isUserLogged}) => {
+  const router = useRouter()
+
+  const handleLogout = async () => {
+    try {
+      const token = localStorage.getItem('jwtToken')
+      const baseUrl = process.env.DEV_BASE_URL
+      const url = baseUrl + 'auth/logout'
+
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+      })
+
+      if (response.status === 204) {
+        toast.success('Logout com sucesso!')
+        localStorage.clear()
+        router.push('/login')
+      }
+    } catch (error) {
+      console.log('Error: ', error)
+    }
+  }
+
   return (
     <div className='mr-28 w-full flex justify-end'>
         {isUserLogged ? (
@@ -28,9 +57,10 @@ const HeaderSecondMenu: FC<HeaderSecondMenuProps> = ({isUserLogged}) => {
               <HeaderSecondMenuItem name="phone" isUserLogged={true}/>
               <div className='secondMenuItem' style={{marginTop: "5.3rem", right: "8.1rem"}}>Contactos</div>
             </div>
-            <div className='group'>
+            <div className='group' onClick={handleLogout}>
               <HeaderSecondMenuItem name="logout" isUserLogged={true}/>
               <div className='secondMenuItem' style={{marginTop: "5.3rem", right: "4.5rem"}}>Logout</div>
+              <ToastContainer />
             </div>
           </>
         ) : (
