@@ -17,7 +17,7 @@ const DashboardGraphic: FC<DashboardGraphicProps> = ({progress, spent}) => {
         </div>
         <div className='shadow shadow-black rounded-xl flex flex-col items-center py-1 text-sm w-fit px-4 ml-8 absolute top-40 right-11 bg-white'>
             <span className='text-slate-600 opacity-80 font-semibold'>Últimos 30 dias</span>
-            {spent.valueOf() < 0 ? (
+            {spent.valueOf() > 0 ? (
                 <span className='text-red-500 font-bold'>{spent.toString()}</span>
             ) : (
                 <span className='text-primary-dark font-bold'>{spent.toString()}</span>
